@@ -1,0 +1,39 @@
+/* Abstract Class               *
+ * Abstract Class Functionality *
+ * Thu Feb 14 11:10:04 PST 2019 */
+
+#include <iostream>
+#include <cstdlib>
+/* Abstract Class Car:              *
+ * Car cannot be defined as an      *
+ * therefore it is an abstract type */
+class Car{
+protected:
+  int vinNumber;
+public:
+  //Pure virtual functions
+  virtual void honk() = 0;
+  virtual int setVin() = 0;
+};
+
+/* Class inherits abstract class Car */
+class Datsun260z:public Car{
+public:
+  Datsun260z(){};
+  virtual void honk(){
+    std::cout << "<HONKING>" << std::endl;
+  }
+  virtual int setVin(){
+    return vinNumber = std::rand() % 2000 + 1000;
+  }
+};
+
+int main(){
+  //Create Pointer Array of Datsuns
+  Car *datsuns[4];
+  Datsun260z modelOne;
+
+  datsuns[0] = &modelOne;
+  datsuns[0]->honk();  
+}
+  
